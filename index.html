@@ -10,8 +10,9 @@
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
-<!-- ENHANCMENT - Use minified css instead -->
+<!-- ENHANCMENT - Use minified css instead and media queries-->
     <link href="css/min/style.css" rel="stylesheet">
+    <link href="css/min/print.css" rel="stylesheet" media="print">
 
     <!-- ENHANCMENT - Use minified js instead -->
     <script async src="js/min/app.js"></script>
@@ -60,8 +61,7 @@
       <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
     </footer>
 
-    <!-- ENHANCEMENT - moved Google analytics and print style to the bottom -->
-    <link href="css/min/print.css" rel="stylesheet">
+    <!-- ENHANCEMENT - moved Google analytics to the bottom -->
     <script>
       (function(w,g){w['GoogleAnalyticsObject']=g;
       w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
