@@ -1,1 +1,10 @@
 http://discussions.udacity.com/t/gulp-automate-your-life-feb-15/14142
+Google PageSpeed site
+Added Chrome extension
+
+install Gulp
+minify JavasScript w/ Gulp
+minify CSS w/ Gulp
+place watch on files w/ Gulp
+optimize images w/ Gulp
+update links in Index to use minified css, js, and images
