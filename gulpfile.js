@@ -14,7 +14,6 @@ gulp.task('scripts', function(){
 gulp.task('css', function(){
     gulp.src('css/*.css')
         .pipe(minifyCSS())
-        .pipe(concatify('app.css'))
         .pipe(gulp.dest('css/min'));
 });
 
