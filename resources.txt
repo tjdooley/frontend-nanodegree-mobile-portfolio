@@ -8,3 +8,12 @@ minify CSS w/ Gulp
 place watch on files w/ Gulp
 optimize images w/ Gulp
 update links in Index to use minified css, js, and images
+Inlined CSS and web fonts
+
+
+Main.js
+
+updatePositions() - moved items selector outside of function since it won't change.  No need to run this function multiple times.
+
+during pizza creation, moved selector outside of loop.  Updated changePizzaSlices to use variable
+to cut down on more unneeded queries.  And moved variables outside of loop since they only need to be calculated once
