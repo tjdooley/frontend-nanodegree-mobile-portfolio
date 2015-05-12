@@ -3,46 +3,42 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     minifyhtml= require('gulp-minify-html'),
     minifyinline= require('gulp-minify-inline'),
-    concatify = require('gulp-concat'),
     imagemin = require('gulp-imagemin');
 
 gulp.task('scripts', function(){
-    gulp.src('js/*.js')
+    gulp.src('./js/*.*')
         .pipe(uglify())
-        .pipe(concatify('app.js'))
-        .pipe(gulp.dest('js/min'));
+        .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('css', function(){
-    gulp.src('css/*.css')
+    gulp.src('./css/*.*')
         .pipe(minifyCSS())
-        .pipe(gulp.dest('css/min'));
+        .pipe(gulp.dest('./dist/css'));
 });
 
 gulp.task('html', function() {
-  gulp.src('index.html')
+  gulp.src('./*.html')
     .pipe(minifyinline())
-    .pipe(concatify('indexMin.html'))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./dist'))
     .pipe(minifyhtml())
-    .pipe(concatify('indexMin.html'))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('images', function() {
-    gulp.src('img/*.*')
+    gulp.src('./img/*.*')
         .pipe(imagemin({
             optimizationLevel: 5
         }))
-        .pipe(gulp.dest('img/min'));
+        .pipe(gulp.dest('./dist/img'));
 })
 
 gulp.task('viewsImg', function() {
-    gulp.src('views/images/*')
+    gulp.src('./views/images/*')
         .pipe(imagemin({
             optimizationLevel: 5
             }))
-        .pipe(gulp.dest('views/images/min'));
+        .pipe(gulp.dest('./dist/views/images'));
 })
 
 gulp.task('watch', function(){
