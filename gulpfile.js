@@ -1,6 +1,8 @@
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     minifyCSS = require('gulp-minify-css'),
+    minifyhtml= require('gulp-minify-html'),
+    minifyinline= require('gulp-minify-inline'),
     concatify = require('gulp-concat'),
     imagemin = require('gulp-imagemin');
 
@@ -15,6 +17,16 @@ gulp.task('css', function(){
     gulp.src('css/*.css')
         .pipe(minifyCSS())
         .pipe(gulp.dest('css/min'));
+});
+
+gulp.task('html', function() {
+  gulp.src('index.html')
+    .pipe(minifyinline())
+    .pipe(concatify('indexMin.html'))
+    .pipe(gulp.dest('./'))
+    .pipe(minifyhtml())
+    .pipe(concatify('indexMin.html'))
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('images', function() {
@@ -38,4 +50,4 @@ gulp.task('watch', function(){
     gulp.watch('css/**/*.css', ['css']);
 });
 
-gulp.task('default', ['scripts', 'css', 'images', 'viewsImg']);
+gulp.task('default', ['scripts', 'css', 'images', 'viewsImg', 'html']);
