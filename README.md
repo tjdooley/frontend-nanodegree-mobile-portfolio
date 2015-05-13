@@ -18,6 +18,7 @@ gulp serve
 **Changes**
 * Used Gulp to minify all Javascript, CSS, HTML, and images.  Inline CSS was minified as well.
 * Inlined style.css into index.html
+* Inline the web font into index.html
 * Used media query for print.css
 * Asynchronously loading perfmatters.js and analytics.js
 * Created smaller images when needed rather than load in very large image and resizing it.
