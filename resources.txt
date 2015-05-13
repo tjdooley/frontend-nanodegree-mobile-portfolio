@@ -1,0 +1,4 @@
+http://discussions.udacity.com/t/gulp-automate-your-life-feb-15/14142
+https://github.com/udacity/fend-office-hours/tree/master/Web%20Optimization/Effective%20Optimizations%20for%2060%20FPS
+https://github.com/JGRoeder/frontend-nanodegree-mobile-portfolio (for moving pizza algorithm)
+Google PageSpeed site
