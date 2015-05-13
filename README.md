@@ -2,6 +2,17 @@
 
 Project 4 of Udacity Front-end Nanodegree Program
 
+####Build and Deploy
+I used gulp to build and deploy changes for testing.  The gulpfile.js is set up to build by default and place all files in the dist directory.  In the command line, just type.
+```
+gulp
+```
+
+The gulpfile is also set up to deploy the changes for testing in the browser.  It will launch at localhost:3000
+```
+gulp serve
+```
+
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
 **Changes**
