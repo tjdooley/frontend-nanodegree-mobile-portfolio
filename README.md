@@ -4,7 +4,7 @@ Project 4 of Udacity Front-end Nanodegree Program
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
-** Changes **
+**Changes**
 * Used Gulp to minify all Javascript, CSS, HTML, and images.  Inline CSS was minified as well.
 * Inlined style.css into index.html
 * Used media query for print.css
@@ -20,7 +20,7 @@ gulp-minify-inline
 gulp-imagemin
 ```
 
-** Results **
+**Results**
 * PageSpeed Insights Mobile: 96/100
 * PageSpeed Insights Desktop: 97/100
 
