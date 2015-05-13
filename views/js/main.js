@@ -451,9 +451,8 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
-  // Moved newwidth calculation outside of loop since we only need 1
   function changePizzaSizes(size) {
-    // Moved dx outside of loop, only need to know size of 1 pizza since they're all the same.
+    // Moved dx and newwidth outside of loop, only need to know size of 1 pizza since they're all the same.
     var dx = determineDx(randomPizzas[0], size);
     var newwidth = (randomPizzas[0].offsetWidth + dx) + 'px';
 
@@ -510,25 +509,25 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // Moves the sliding background pizzas based on scroll position
 
 //Store the items outside the function since they don't change.  No need
-//to run this selector multiple times.
+//to run this selector multiple times.  Also don't use queryAll
 var items = document.getElementById("movingPizzas1").children;
 
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+  //Save this rather than pulling from the body every time.
   var cachedScrollTop = document.body.scrollTop;
   var phases = [];
 
+  //Since this uses a mod of 5, there are only 5 different possible values.
+  //Putting them into an array rather than run calculation more than 5 times.
   for (var i = 0; i < items.length; i++) {
     phases.push(Math.sin((cachedScrollTop / 1250) + (i % 5)));
   }
 
+  //Use transform rather than style.left
   for (var i = 0; i < items.length; i++) {
-    //var phase = Math.sin((cachedScrollTop / 1250) + (i % 5));
-    // console.log(phase, document.body.scrollTop / 1250)
-    //console.log(items[i].basicLeft);
-    //items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
     items[i].style.transform = "translateX(" + 100 * phases[i % 5] + "px)";
   }
 
@@ -545,42 +544,27 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
-//Generates the sliding pizzas when the page loads.
-// var movingPizzas = document.querySelector("#movingPizzas1");
-// document.addEventListener('DOMContentLoaded', function() {
-//   var cols = 8;
-//   var s = 256;
-//   for (var i = 0; i < 30; i++) {
-//     var elem = document.createElement('img');
-//     elem.className = 'mover';
-//     elem.src = "images/pizza.png";
-//     elem.style.height = "100px";
-//     elem.style.width = "73.333px";
-//     elem.basicLeft = (i % cols) * s;
-//     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-//     movingPizzas.appendChild(elem);
-//   }
-//   updatePositions();
-// });
-
+//Rather than generate extra moving pizzas we don't need, I found this
+//cool algorithm to calculate number needed based on screen size.
 document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   var cols = screen.availWidth / s;
   var rows = screen.availHeight / s;
   //Calculate a pizza total based on screen size rather than predetermined value
   var total = Math.ceil(cols * rows);
-  var movingPizzas = document.getElementById("movingPizzas1");
+  var pizzas = document.getElementById("movingPizzas1");
   for (var i = 0; i < total; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza_small.png";
-    elem.style.transform = 'translate3d(0, 0, 0) translate(0px)'; // translate3d ( )
+    //translate
+    elem.style.transform = 'translate3d(0, 0, 0) translate(0px)';
     elem.style.height = '100px';
     elem.style.width = '77px';
     elem.basicLeft = (i % cols) * s;
     elem.style.left = elem.basicLeft + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    movingPizzas.appendChild(elem);
+    pizzas.appendChild(elem);
   }
   updatePositions();
 });

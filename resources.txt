@@ -1,4 +1,6 @@
 http://discussions.udacity.com/t/gulp-automate-your-life-feb-15/14142
+https://github.com/udacity/fend-office-hours/tree/master/Web%20Optimization/Effective%20Optimizations%20for%2060%20FPS
+https://github.com/JGRoeder/frontend-nanodegree-mobile-portfolio
 Google PageSpeed site
 Added Chrome extension
 
@@ -13,7 +15,7 @@ Inlined CSS and web fonts
 
 Main.js
 
-updatePositions() - moved items selector outside of function since it won't change.  No need to run this function multiple times.
+updatePositions() - moved items selector outside of function since it won't change.  No need to run this function multiple times.  Also moved scroll position.
 
 during pizza creation, moved selector outside of loop.  Updated changePizzaSlices to use variable
 to cut down on more unneeded queries.  And moved variables outside of loop since they only need to be calculated once
