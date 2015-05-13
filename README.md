@@ -1,36 +1,28 @@
-Beginning of page improvements.
-
 ## Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
-
-To get started, check out the repository, inspect the code,
-
-### Getting started
+Project 4 of Udacity Front-end Nanodegree Program
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
-Some useful tips to help you get started:
+** Changes **
+* Used Gulp to minify all Javascript, CSS, HTML, and images.  Inline CSS was minified as well.
+* Inlined style.css into index.html
+* Used media query for print.css
+* Asynchronously loading perfmatters.js and analytics.js
+* Created smaller images when needed rather than load in very large image and resizing it.
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
+I used npm to install Gulp packages and set them up to run in gulpfile.js.  This did most of the heavy lifting as far as minifying all assets and optimizing images. Gulp packages used include...
+```
+gulp-uglify
+gulp-minify-css
+gulp-minify-html
+gulp-minify-inline
+gulp-imagemin
+```
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
-
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
-
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ngrok 8080
-  ```
-
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
-
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+** Results **
+* PageSpeed Insights Mobile: 96/100
+* PageSpeed Insights Desktop: 97/100
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
