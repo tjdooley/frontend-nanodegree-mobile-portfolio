@@ -517,17 +517,17 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   //Save this rather than pulling from the body every time.
-  var cachedScrollTop = document.body.scrollTop;
+  var cachedScrollTop = document.body.scrollTop / 1250;
   var phases = [];
 
   //Since this uses a mod of 5, there are only 5 different possible values.
   //Putting them into an array rather than run calculation more than 5 times.
-  for (var i = 0; i < items.length; i++) {
-    phases.push(Math.sin((cachedScrollTop / 1250) + (i % 5)));
+  for (var i = 0; i < 5; i++) {
+    phases.push(Math.sin((cachedScrollTop) + (i % 5)));
   }
 
   //Use transform rather than style.left
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0, l = items.length; i < l; i++) {
     items[i].style.transform = "translateX(" + 100 * phases[i % 5] + "px)";
   }
 
@@ -549,7 +549,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   var cols = screen.availWidth / s;
-  var rows = screen.availHeight / s;
+  var rows = screen.height / s;
   //Calculate a pizza total based on screen size rather than predetermined value
   var total = Math.ceil(cols * rows);
   var pizzas = document.getElementById("movingPizzas1");

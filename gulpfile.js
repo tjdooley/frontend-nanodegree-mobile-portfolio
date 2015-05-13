@@ -3,7 +3,10 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     minifyhtml= require('gulp-minify-html'),
     minifyinline= require('gulp-minify-inline'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-image-optimization'),
+    webserver = require('gulp-webserver'),
+    serve = require('gulp-serve'),
+    browserSync = require('browser-sync');
 
 gulp.task('js', function(){
     gulp.src('./js/*.*')
@@ -64,6 +67,31 @@ gulp.task('views-img', function() {
 gulp.task('watch', function(){
     gulp.watch('js/*.js', ['scripts']);
     gulp.watch('css/**/*.css', ['css']);
+});
+
+gulp.task('webserver', function() {
+  gulp.src('app')
+    .pipe(webserver({
+      livereload: true,
+      directoryListing: true,
+      open: true
+    }));
+});
+
+
+// Watch Files For Changes & Reload
+gulp.task('serve', function() {
+  browserSync({
+    notify: false,
+    // Customize the BrowserSync console logging prefix
+    logPrefix: 'WSK',
+    // Run as an https by uncommenting 'https: true'
+    // Note: this uses an unsigned certificate which on first access
+    //       will present a certificate warning in the browser.
+    // https: true,
+    server: ['.tmp', 'dist']
+  });
+
 });
 
 gulp.task('default', ['js', 'views-js', 'css', 'views-css', 'img', 'views-img', 'html', 'views-html']);
